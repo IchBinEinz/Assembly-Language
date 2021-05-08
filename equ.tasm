@@ -1,0 +1,15 @@
+.MODEL SMALL
+.CODE
+ORG 100h
+Proses :	JMP Mulai
+		nama db 'hallo, Apa Kabar!!! ,,,$'
+Mulai :		mov bx,offset nama
+Tulis : 		mov dl,[bx]
+		cmp dl,batas
+		je stop
+		mov ah,02h
+		int 21h
+		inc bx
+		loop Tulis
+Stop :		int 20h
+END Proses
